@@ -1,0 +1,13 @@
+python-dotenv==1.0.0
+pytest==7.4.0
+
+# pypdf==3.17.0
+# unstructured==0.10.0
+
+# qdrant-client==1.7.0
+# sentence-transformers==2.2.2
+
+# langchain==0.1.0
+# ollama==0.1.0
+
+# streamlit==1.29.0
