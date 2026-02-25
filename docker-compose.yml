@@ -1,0 +1,17 @@
+
+
+services:
+  # Векторная база данных Qdrant
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: banking-rag-qdrant
+    ports:
+      - "6333:6333"  # HTTP API (для браузера и Python)
+      - "6334:6334"  # gRPC (для внутреннего общения)
+    volumes:
+      - qdrant_storage:/qdrant/storage  # Чтобы данные не пропадали при перезапуске
+    restart: unless-stopped  # Автоматический перезапуск при падении
+
+# Объявляем том для хранения данных
+volumes:
+  qdrant_storage:
