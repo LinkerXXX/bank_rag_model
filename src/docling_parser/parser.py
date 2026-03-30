@@ -54,14 +54,24 @@ def parser_pdf(pdf_to_txt, skip_pages=True):
     full_text = "\n\n".join(all_text)
     
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=500,
-        chunk_overlap=50,
-        separators=["\n\n", "\n", ". ", " ", ""]
+        chunk_size=600,
+        chunk_overlap=100,
+        separators=[
+        "\n\n",           # Абзацы
+        "\n",             # Переносы строк
+        "· ",             # Маркеры списков
+        "; ",             # Точка с запятой в перечислениях
+        ". ",             # Конец предложения
+        "— ",             # Тире в определениях
+        "→",              # Стрелки в операциях
+        " ",              # Пробелы
+        ""                # Посимвольно (крайний случай)
+        ]
     )
     
     chunks = splitter.split_text(full_text)
     
     return [
         {"text": chunk, "metadata": {"source": Path(pdf_to_txt).name}}
-        for chunk in chunks if len(chunk.strip()) > 50
+        for chunk in chunks if len(chunk.strip()) > 20
     ]

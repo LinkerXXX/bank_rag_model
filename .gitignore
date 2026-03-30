@@ -14,13 +14,14 @@ env/
 *.swp
 *.swo
 
-# Data 
-data/*.pdf
-data/*.json
-data/*.txt
+# Исходные PDF
+data/docs/*.pdf
 
-# Docker
+# Результаты парсинга
+data/parse/*.json
+
+# Докер
 .docker/
 
-# Logs
+# Логи
 *.log
